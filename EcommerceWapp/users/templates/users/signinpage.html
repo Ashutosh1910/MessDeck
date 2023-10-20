@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <title>Registration page</title>
+    <body style="background-color: gray;">
+        
+   
+    <legend>
+<div class="content-section" style="text-align: center; border-color: red;border-width: 45px; "  >
+        <fieldset >
+            <form method="post">
+                {%csrf_token%}
+        
+             {{form.as_p}}
+        
+        
+        
+            
+            
+        </fieldset>
+        <div><button type="submit">SIGN UP</button><br></form></div>
+          <div><small>already have an account? <a href="{% url 'LoginPage' %}"> sign in</a></small></div>
+        </div>
+    </div></legend>
+</body>
+    </html>

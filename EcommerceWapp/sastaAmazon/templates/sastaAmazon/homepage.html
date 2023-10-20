@@ -1,0 +1,26 @@
+{%extends "sastaAmazon/base.html"%}
+{%block content%}
+{% if user.is_authenticated %}
+{%for product in products%} 
+       <fieldset style="display:inline-block;">
+       <h3>{{product.item_name}}</h3>
+       <p>{{product.item_description}}</p>
+     <div> Price: <span style="border: solid blue;">{{product.item_price}}</span></div>
+       <img src="" alt="">
+       <button value="add to cart" type="button" >Add to Cart</button><br>
+       <a href="{% url 'ProductPage' product.id %}">SEE MORE</a>
+
+
+       </fieldset>
+       <br>
+
+       {%endfor%}
+       {% if user.is_superuser %}
+       <a href="{% url 'ProductAddPage' %}"><h2> Add products </h2></a>
+       {% endif %}
+       {% else %}
+       <h2>LOGIN TO SEE PRODUCTS</h2>
+       {% endif %}
+
+
+{%endblock content%}

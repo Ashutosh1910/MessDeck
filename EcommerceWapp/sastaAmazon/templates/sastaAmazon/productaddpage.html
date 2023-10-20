@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <title>Add New Product</title>
+    <body style="background-color: gray;">
+        {%if messages%}
+            {%for message in messages%}
+           <div style="text-align: center; border: solid blue; background-color: red; border-radius: 400px;">{{message}}</div>
+           {%endfor%}
+           {%endif%}
+        
+   
+    <legend>
+<div class="content-section" style="text-align: center; border-color: red;border-width: 45px; "  >
+        <fieldset >
+            <form method="post">
+                {%csrf_token%}
+        
+             {{form.as_p}}
+        
+        
+        
+            
+            
+        </fieldset>
+        <div><button type="submit">Add</button><br></form></div>
+         
+        </div>
+    </legend>
+</body>
+    </html>

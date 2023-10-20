@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <title>Login page</title>
+    <body style="background-color: gray;">
+        {%if messages%}
+            {%for message in messages%}
+           <div style="text-align: center; border-color:red ;">{{message}}</div>
+           {%endfor%}
+           {%endif%}
+        
+   
+    <legend style="align-self: center;">
+<div class="content-section" style="background-color: blue;">
+        <fieldset style="text-align: center; margin: 2 auto; border: red;">
+            <form method="post">
+                {%csrf_token%}
+        
+             {{form.as_p}}
+        
+        
+        
+            
+            
+        </fieldset>
+        <div style="text-align: center;" ><button type="submit">Login</button><br></form></div>
+          <div style="text-align: center;" ><small>Dont have an account? <a href="{% url 'signupPage' %}"> sign up</a></small></div>
+        </div>
+    </div></legend>
+</body>
+    </html>
