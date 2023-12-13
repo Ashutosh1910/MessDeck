@@ -1,0 +1,28 @@
+{%extends "base.html"%}
+{%block content%}
+ {%if user.mess_profile%}
+    {%for review in reviewlist%}
+    <div class="row mb-2" >
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+         
+          <h3 class="mb-0" style="color: white;">{{review.title}}</h3>
+          <div class="mb-1 text-muted">{{review.on}}</div>
+          <p class="card-text mb-auto"style="color: white;">{{review.description}}</p>
+          <div class="mb-1 text-muted">By:{{review.by.first_name}} {{review.by.last_name}}</div>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+           {%if review.image%}
+          <img src="{{review.image.url}}" alt="" width="400%" height="250%"></svg>
+            {%endif%}
+        </div>
+      </div>
+    </div>
+      {%endfor%}
+   {%endif%}
+    
+      
+    
+  </div>
+  {%endblock%}

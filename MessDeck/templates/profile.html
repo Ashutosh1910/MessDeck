@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%block content%}
+{% if checker %}
+<div class="container">
+    <h1 class="text-success">{{request.user}}'s Profile</h1>
+    <div class="card">
+        <div class="card-header">PSRN NO.:{{request.user.mess_profile.psrn_no}}</div>
+        <div class="card-header">DESIGNATION:MESS STAFF</div>
+    </div>
+   
+</div>
+{% else %}
+<div class="container">
+    <h1 class="text-success">{{request.user.first_name}}'s Profile</h1>
+    <div class="card">
+        <div class="card-header">Bits ID: {{request.user.student_profile.bits_id}}</div>
+        <div class="card-body">Mess: {{request.user.student_profile.student_hostel}} </div>
+        
+    </div>
+    
+</div>
+
+{% endif %}
+<div class="card-body" style="text-align: center; font-size: larger;"><a href="{%url 'createprofile'%}"  style="display: inline-block;"> Edit Profile</a></div>
+
+
+{% endblock %}

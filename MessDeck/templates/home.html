@@ -1,0 +1,109 @@
+{%extends "base.html"%}
+{% load socialaccount %}
+{% block content%}
+{% if user.is_authenticated %}
+  
+  
+
+      
+ 
+<br><br><br><br><br><br><br>
+{% if menudaylist%}
+<h1 class="text-center" id="xxx-large" style="color: lawngreen;" >Menu of current month</h1>
+<br><br><br>
+
+  <div class="container" style="color: white;">
+    <div class="row">
+      {%for menuday in menudaylist%}
+        <div class="col-md-4">
+          <!-- Display item information -->
+          <h3><a href="{%url 'viewmenudetail' menuday.id%}">{{ menuday.day }}</a></h3>
+          
+        </div>
+      {% endfor %}
+    </div>
+  </div>{%endif%}
+ 
+    
+  
+<form action="{% url 'mark_attendance' %}" method="post">
+  {% csrf_token %}
+{%if user.student_profile%}
+  
+  <div style="text-align: center;"><button type="submit" value="submit"class="btn btn-primary">MARK ATTENDANCE</button></div>
+ {%endif%}
+
+</form>
+{%if next_meal%}
+<div style="text-align: center;"><h1>NEXT MEAL</h1>
+<h2 style="color: blue;">{{ next_meal.meal }}</h2>
+    {% for i in next_meal.item_set.all %}
+      <h3 style="color: lawngreen;">{{ i.item_name }}</h3>
+     {%endfor%}</div>{%endif%}
+ {%if attend_list %}
+ <h1 style="text-align: center;color: green;">ATTENDANCE</h1>
+<div class="row" style="text-align: center ;color: white;font-size: larger;">
+    <div class="col">MEAL</div>
+    <div class="col">DATE</div>
+    <div class="col">Attended by</div></div>
+    
+    <div class="w-100"></div>
+    {%for attend in attend_list%}
+    <div class="row" style="text-align: center;color: white;border: solid; font-size: large;">
+      <div class="col">{{attend.meal.meal}} </div>
+      <div class="col">{{attend.meal.of_day.day}}</div>
+      <div class="col" style="text-align: center;">{{attend.no_attended}}</div></div>
+      <div class="w-100"></div>
+      {%endfor%}
+      {%endif%}
+    
+ 
+
+
+
+
+  
+ 
+
+    
+    
+    
+  
+
+{% else %}
+<br><br><br><br><br><br><br>
+<h1 class="text-center" id="xxx-large" style="color: lawngreen;" >WELCOME TO MessDeck</h1>
+<br><br><br>
+
+<div class="container">
+  <div class="row justify-content-center" style="padding: 0%; margin: 0;">
+    <div class="col-4" style="border:solid; color:red;">
+     <div style="border: SOLID; color: red; font-size: xx-large; display:block; text-align: center;">STAFF LOGIN</div><br><br><br>
+     <h3 style="text-align: center;"><a href="{%url 'LoginPage' %}"><button>Login</button></a></h3>
+  
+    </div>
+    <div class="col-4" style="border:solid;color:white;height: 300px;">
+      <div style="border: SOLID; color: white; font-size: xx-large; display:block; text-align: center;">STUDENT LOGIN</div>
+
+      <figure class="text-center" >
+        <blockquote class="blockquote">
+    
+    
+
+        <p><h1>Login with Gmail</h1></p>
+        </blockquote>
+        <figcaption >
+           <a href="{% provider_login_url 'google' %}" ><button class="btn-"><h1>Login</h1></button</a> 
+        </figcaption>
+      </figure>
+    
+      
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
+

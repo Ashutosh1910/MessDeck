@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+{% block content %}
+{%if user.mess_profile %}
+<div class="form-class" style="text-align: center; background-color: blue;display:block; border: solid;">  
+<h2 style="color: lawngreen;">Change Menu </h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-primary">Change</button>
+    </form></div>  
+    
+    {%else%}
+    <h1 style="text-align: center; color: red;">PERMISSION DENIED!</h1>
+    {%endif%}
+{% endblock %}

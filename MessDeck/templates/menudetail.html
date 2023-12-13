@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+
+{% block content %}
+  <div class="container"> 
+   <form action="{%url 'rate' day.pk %}"method="post"> {%csrf_token%}
+    <div class="row">
+        <h1 style="text-align: center; color: chartreuse;">MENU OF {{  day.day}}</h1>
+    {% for m in day.meal_set.all %}
+    <div class="col-md-4 mb-4">
+      <h2 style="color: blue;">{{ m.meal }}</h2>
+      {% for i in m.item_set.all %}
+        <h3 style="color: lawngreen;">{{ i.item_name }}</h3>
+        {%if user.student_profile %}
+     <input type="range" class="form-control-range" id="slider" name="slider{{i.pk}}" min="0" max="10" step="1">
+      {%endif%}
+      {%if user.mess_profile %}
+      <h4 style="color: white;">Average rating:{{ i.item_avg_rating }}</h4>
+      {%endif%}
+      
+          
+      {%endfor%}</div>
+      
+    {% endfor %}</div>{%if user.student_profile %}<div style="text-align: center;"><button type="submit" value="submit" name="ratingbutton"class="btn btn-primary">Rate items in {{day}}</button></div>
+    {%endif%}
+</form>
+<br><br><br>
+{%if user.mess_profile %}
+<div style="text-align: center;"><a href="{%url 'avgrate' day.id %}"><button type="submit" value="submit" name="ratingbutton"class="btn btn-primary">Update Average rating of items in {{day}}</button></a></div>
+{%endif%}
+</div> <br> <br>
+
+{% endblock %}

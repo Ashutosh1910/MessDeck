@@ -1,0 +1,25 @@
+{%extends "base.html"%}
+{% block content%}
+<legend style="align-self: center; text-align: center;">
+    <h1 style="text-align: center; margin: 2 auto; color: red; ">Write Review</h1>
+    <div class="content-section" style="background-color:white; display: inline-block; text-align: center;">
+            <fieldset style="text-align: center; margin: 2 auto; border: red;">
+                <form method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+            
+                 {{form.as_p}}
+            </fieldset>
+            <div style="text-align: center;" ><button type="submit">SUBMIT</button><br></form></div>
+            </div>
+        </div></legend>
+        {%endblock%}
+             
+            
+            
+                
+                
+            
+                
+                
+
+

@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{% block content%}
+{%if user.mess_profile %}
+<h1 style="text-align: center;color: green;">BILL LIST</h1>
+<div class="row" style="text-align: center ;color: white;border: solid;font-size: larger;">
+    <div class="col">STUDENT NAME</div>
+    <div class="col">BREAKFASTS ATTENDED</div>
+    <div class="col">LUNCHS ATTENDED</div>
+    <div class="col">DINNERS ATTENDED</div>
+    <div class="col">TOTAL BILL</div>
+    <div class="col">Convert to excel</div>
+</div>
+
+    <div class="w-100"></div>
+    {%for bill in bill_set%}
+    <div class="row" style="text-align: center;color: white;border: solid; font-size: large;">
+        <div class="col">{{bill.student.first_name}} {{ bill.student.last_name}}</div>
+        <div class="col">{{bill.breakfast_attended}}</div>
+        <div class="col">{{bill.lunch_attended}}</div>
+        <div class="col">{{bill.dinner_attended}}</div>
+        <div class="col">{{bill.billtotal}}</div>
+    <div class="col"><a href="{%url 'convert_to_excel' bill.pk %}" ><button class="btn btn-info">Import to Excel</button></a></form></div>
+</div>
+
+        <div class="w-100"></div>
+        {%endfor%}
+        
+        
+        {%else%}
+<h1 style="text-align: center;color: red;">ACCESS DENIED</h1>
+            
+            
+            {%endif%}
+{%endblock%}
+
+
+
+
+    
