@@ -154,3 +154,4 @@ LOGIN_URL='home'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '638304501829-e1upuatdmpndacr3qtmq7k5th16dq50l.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+STATIC_ROOT= BASE_DIR / "staticfiles"
