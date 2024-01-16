@@ -1,10 +1,4 @@
 
 
-TASK2 
-didnt get time to host the website 
-couldnt figure out how to  implement add addtocart feature 
-html nai aata :(
-Admin-Vendor
-pass-vendy123
-user-ashutosh
-pass-tosh1234
+ECommerce webapp is basic django ecommerce app(not completed)(for ieee task)
+MessDeck is for sutt final task(complete and hosted) https://ashutosh1910.pythonanywhere.com/
